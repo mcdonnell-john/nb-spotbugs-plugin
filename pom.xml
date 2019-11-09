@@ -4,6 +4,7 @@
     <groupId>org.jmcdonnell.netbeans</groupId>
     <artifactId>nb-spotbugs-plugin</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>NetBeans SpotBugs Plugin</name>
     <packaging>nbm</packaging>
     
     <licenses>
@@ -38,7 +39,7 @@
                 <artifactId>nbm-maven-plugin</artifactId>
                 <version>4.3</version>
                 <extensions>true</extensions>
-                 <configuration>
+                <configuration>
                     <licenseFile>LICENSE</licenseFile>
                     <licenseName>Apache 2.0</licenseName>
                     <verifyRuntime>warn</verifyRuntime>
@@ -57,12 +58,38 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                     </archive>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.netbeans.contrib.yenta</groupId>
+                                    <artifactId>api</artifactId>
+                                    <version>1.1</version>
+                                    <type>jar</type>
+                                    <includes>**/*.class</includes>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -111,6 +138,11 @@
             <groupId>org.netbeans.modules</groupId>
             <artifactId>org-netbeans-modules-code-analysis</artifactId>
             <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.contrib.yenta</groupId>
+            <artifactId>api</artifactId>
+            <version>1.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

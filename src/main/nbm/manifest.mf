@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
 OpenIDE-Module-Localizing-Bundle: org/jmcdonnell/netbeans/spotbugs/plugin/Bundle.properties
-
+OpenIDE-Module-Install: org/jmcdonnell/netbeans/spotbugs/plugin/install/Installer.class
