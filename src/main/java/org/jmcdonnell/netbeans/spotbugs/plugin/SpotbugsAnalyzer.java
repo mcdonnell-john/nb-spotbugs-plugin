@@ -25,11 +25,11 @@ import org.netbeans.spi.editor.hints.ErrorDescription;
  *
  * @author John McDonnell
  */
-public class SpotbugsAnayzer implements Analyzer {
+public class SpotbugsAnalyzer implements Analyzer {
 
     private final Analyzer.Context context;
     
-    public SpotbugsAnayzer(Analyzer.Context context) {
+    public SpotbugsAnalyzer(Analyzer.Context context) {
         this.context = context;
     }
 

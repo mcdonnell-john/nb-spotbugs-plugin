@@ -48,6 +48,6 @@ public class SpotbugsAnalyzerFactory extends AnalyzerFactory {
 
     @Override
     public Analyzer createAnalyzer(Analyzer.Context context) {
-        return new SpotbugsAnayzer(context);
+        return new SpotbugsAnalyzer(context);
     }
 }
